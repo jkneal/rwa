@@ -4,10 +4,6 @@ on:
   pull_request_target:
     types: [opened, synchronize]  # Runs on new PRs and updates
 
-permissions:
-  contents: read
-  id-token: write
-
 jobs:
   code-review:
     runs-on: ubuntu-latest
@@ -43,4 +39,4 @@ jobs:
 
             Provide constructive feedback with specific suggestions for improvement.
             Use inline comments to highlight specific areas of concern.
-          allowed_tools: "mcp__github__add_pull_request_review_comment"
+          #allowed_tools: "mcp__github__add_pull_request_review_comment"
