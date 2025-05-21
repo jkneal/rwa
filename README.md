@@ -9,7 +9,7 @@ This project does not have Front end mock data. Please plan to develop with the 
 Upon importing this project into IntelliJ it should automatically recognize it as a Spring project and create a RwaApplication Spring Boot run configuration for you. This may take a few minutes, IntellJ should have a progress bar in the lower right for resolving artifacts. Edit it and add the following two Environment Variables:
 `launchpad.env-code=dev;SPRING_PROFILES_ACTIVE=dev;SPRING_CLOUD_VAULT_TOKEN=[Go to Vault test -> Profile in upper right -> Copy token and put it here]`.
 The token expires every day (12 hours). You will need to fetch a new one accordingly.
-
+Update
 If you want to run against a different environment, change launchpad.env-code and add SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_UAA_CLIENT-ID=rwa-dev,SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_UAA_CLIENT-SECRET=[managed/rwa/dev/oauth],APPLICATION_URL=http://localhost:8080
 
 1.`rwa> npm install`. IntelliJ should download and resolve maven dependencies for you. If you have problems try one or both of the following, this should not be necessary every time...

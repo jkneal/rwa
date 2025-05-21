@@ -44,6 +44,24 @@ public class ArrangementController {
 
     DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 
+    @GetMapping("/{documentNumber}/details")
+    public Map<String, Object> getArrangementDetails(@PathVariable String documentNumber) {
+        ArrangementDocument document = arrangementDocumentRepository.findByDocumentNumber(documentNumber);
+        
+        Map<String, Object> details = new HashMap<>();
+        if (document != null) {
+            details.put("documentNumber", document.getDocumentNumber());
+            details.put("status", document.getStatus());
+            details.put("employee", document.getEmployee());
+            details.put("remoteWorkStartDate", document.getRemoteWorkStartDate());
+            details.put("remoteWorkEndDate", document.getRemoteWorkEndDate());
+            details.put("workArrangementType", document.getWorkArrangementType());
+            details.put("createdTimestamp", document.getCreatedTimestamp());
+        }
+        
+        return details;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ArrangementDocument createNewArrangement(@RequestBody Job job) {
         if (!authorizationService.canCreateArrangement(job)) {

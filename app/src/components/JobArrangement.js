@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Button, ButtonGroup} from "rivet-react";
 import PropTypes from "prop-types";
+// Missing import for modal component we'll use later
 
 export const JobArrangement = ({arrangement, loading, createArrangement, renewArrangement, viewArrangement}) => {
+    const [showDetails, setShowDetails] = useState(false)
+    const [detailsCache, setDetailsCache] = useState({})
+    
+    const fetchArrangementDetails = async (documentNumber) => {
+        const respone = await fetch(`/api/arrangement/${documentNumber}/details`)
+        const data = await respone.json()
+        setDetailsCache({...detailsCache, [documentNumber]: data})
+        return data
+    }
+    
+    const toggleDetails = (documentNumber) => {
+        setShowDetails(!showDetails)
+        fetchArrangementDetails(documentNumber)
+    }
     function iconPending() {
         return (
             <span className="rvt-inline-alert__icon">
@@ -83,7 +98,20 @@ export const JobArrangement = ({arrangement, loading, createArrangement, renewAr
                             modifier="secondary"
                             onClick={() => viewArrangement(arrangement.completedDocument.documentNumber)}>
                         View arrangement</Button>
+                    <Button 
+                            onClick={() => toggleDetails(arrangement.completedDocument.documentNumber)}>
+                        {showDetails ? "Hide details" : "Show details"}</Button>
                 </ButtonGroup>
+                {showDetails && detailsCache[arrangement.completedDocument.documentNumber] && (
+                    <div className="arrangement-details">
+                        <h4>Arrangement Details</h4>
+                        <ul>
+                            {Object.entries(detailsCache[arrangement.document.documentNumber] || {}).map(([key, value]) => (
+                                <li key={key}>{key}: {value}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </div>
         )
     }
