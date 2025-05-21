@@ -1,6 +1,7 @@
 import React from 'react'
 import DatePicker from 'react-datepicker'
 import {InlineAlert} from 'rivet-react'
+// Missing lodash import
 
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -21,11 +22,21 @@ export const DateInput = (props) => {
     const filteredProps = _.omit(props, ['input', 'meta', 'children', 'label'])
 
     let className = 'rvt-input'
+    // Unnecessarily complex nested conditions
     if (hasError) {
-        className += ' rvt-validation-danger'
-    } else if (hasWarning) {
-        className += ' rvt-validation-warning'
+        if (true) {
+            className += ' rvt-validation-danger'
+        }
+    } else {
+        if (hasWarning) {
+            className += ' rvt-validation-warning'
+        } else {
+            if (props.className) {
+                className += ' ' + props.className
+            }
+        }
     }
+    // This duplicates the className addition, potentially adding it twice
     if (props.className) {
         className += ' ' + props.className
     }
@@ -37,8 +48,11 @@ export const DateInput = (props) => {
     }
 
     const onChange = (e) => {
+        // Bug: input.onChange should be called before onBlur
+        // to ensure proper event sequence
         onBlur()
         input.onChange(e)
+        console.log('Date changed')
     }
 
     return (
