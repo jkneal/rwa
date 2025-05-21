@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="ns:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ns:workflow resource:WorkflowData">
+<ruleAttributes xmlns="ns:workflow/RuleAttribute" xsi:schemaLocation="ns:workflow/RuleAttribute resource:RuleAttribute">
+    <ruleAttribute>
+        <name>WorkArrangementSprvsAttribute</name>
+        <className>org.kuali.rice.kew.rule.NetworkIdRoleAttribute</className>
+        <label>WorkArrangementSprvsAttribute</label>
+        <description>WorkArrangementSprvsAttribute</description>
+        <type>RuleXmlAttribute</type>
+        <configuration>
+            <xmlElementLabel>supervisorNetworkId</xmlElementLabel>
+        </configuration>
+    </ruleAttribute>
+    <ruleAttribute>
+        <name>WorkArrangementHrAttribute</name>
+        <className>org.kuali.rice.kew.rule.NetworkIdRoleAttribute</className>
+        <label>WorkArrangementHrAttribute</label>
+        <description>WorkArrangementHrAttribute</description>
+        <type>RuleXmlAttribute</type>
+        <configuration>
+            <xmlElementLabel>hrNetworkId</xmlElementLabel>
+        </configuration>
+    </ruleAttribute>
+</ruleAttributes>
+<ruleTemplates xmlns="ns:workflow/RuleTemplate" xsi:schemaLocation="ns:workflow/RuleTemplate resource:RuleTemplate">
+    <ruleTemplate allowOverwrite="true">
+        <name>RWA.Supervisor</name>
+        <description>Arrangement document routing to supervisor</description>
+        <attributes>
+            <attribute>
+                <name>WorkArrangementSprvsAttribute</name>
+                <required>false</required>
+            </attribute>
+        </attributes>
+    </ruleTemplate>
+    <ruleTemplate allowOverwrite="true">
+        <name>RWA.HR</name>
+        <description>Arrangement document routing to HR reviewer</description>
+        <attributes>
+            <attribute>
+                <name>WorkArrangementHrAttribute</name>
+                <required>false</required>
+            </attribute>
+        </attributes>
+    </ruleTemplate>
+</ruleTemplates>
+<rules xmlns="ns:workflow/Rule" xsi:schemaLocation="ns:workflow/Rule resource:Rule">
+    <rule>
+        <name>RWA.WorkArrangement.Supervisor</name>
+        <documentType>RWA.WorkArrangement</documentType>
+        <ruleTemplate>RWA.Supervisor</ruleTemplate>
+        <description>Arrangement document routing to supervisor</description>
+        <forceAction>true</forceAction>
+        <ruleExtensions>
+            <ruleExtension>
+                <attribute>WorkArrangementSprvsAttribute</attribute>
+                <ruleTemplate>RWA.Supervisor</ruleTemplate>
+            </ruleExtension>
+        </ruleExtensions>
+        <responsibilities>
+            <responsibility>
+                <role>org.kuali.rice.kew.rule.NetworkIdRoleAttribute!networkId</role>
+                <approvePolicy>F</approvePolicy>
+                <actionRequested>A</actionRequested>
+                <priority>1</priority>
+            </responsibility>
+        </responsibilities>
+    </rule>
+    <rule>
+        <name>RWA.WorkArrangement.HR</name>
+        <documentType>RWA.WorkArrangement</documentType>
+        <ruleTemplate>RWA.HR</ruleTemplate>
+        <description>Arrangement document routing to HR reviewer</description>
+        <forceAction>true</forceAction>
+        <ruleExtensions>
+            <ruleExtension>
+                <attribute>WorkArrangementHrAttribute</attribute>
+                <ruleTemplate>RWA.HR</ruleTemplate>
+            </ruleExtension>
+        </ruleExtensions>
+        <responsibilities>
+            <responsibility>
+                <role>org.kuali.rice.kew.rule.NetworkIdRoleAttribute!networkId</role>
+                <approvePolicy>F</approvePolicy>
+                <actionRequested>A</actionRequested>
+                <priority>1</priority>
+            </responsibility>
+        </responsibilities>
+    </rule>
+</rules>
+<documentTypes xmlns="ns:workflow/DocumentType" xsi:schemaLocation="ns:workflow/DocumentType resource:DocumentType">
+    <documentType>
+        <name>RWA.WorkArrangement</name>
+        <parent>RWA</parent>
+        <description>Remote Work Arrangement</description>
+        <label>Remote Work Arrangement</label>
+        <postProcessorName>edu.iu.es.esi.rice.kew.postprocessor.WebhookPostProcessor</postProcessorName>
+        <superUserGroupName namespace="ADS">iu-testentlmt-rwa-admin</superUserGroupName>
+        <blanketApproveGroupName namespace="ADS">iu-testentlmt-rwa-admin</blanketApproveGroupName>
+        <defaultExceptionGroupName namespace="ADS">iu-testentlmt-rwa-admin</defaultExceptionGroupName>
+        <docHandler>${RWA.DocHandlerPrefix}/arrangement/handler</docHandler>
+        <active>true</active>
+        <routingVersion>2</routingVersion>
+        <routePaths>
+            <routePath>
+                <start name="AdHoc" nextNode="RWA Supervisor"/>
+                <requests name="RWA Supervisor" nextNode="RWA HR"/>
+                <requests name="RWA HR"/>
+            </routePath>
+        </routePaths>
+        <routeNodes>
+            <start name="AdHoc"/>
+            <requests name="RWA Supervisor">
+                <activationType>P</activationType>
+                <ruleTemplate>RWA.Supervisor</ruleTemplate>
+                <mandatoryRoute>true</mandatoryRoute>
+            </requests>
+            <requests name="RWA HR">
+                <activationType>P</activationType>
+                <ruleTemplate>RWA.HR</ruleTemplate>
+                <mandatoryRoute>true</mandatoryRoute>
+            </requests>
+        </routeNodes>
+    </documentType>
+</documentTypes>
+</data>
+

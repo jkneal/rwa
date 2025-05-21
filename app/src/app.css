@@ -1,0 +1,160 @@
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    margin: 2rem 4rem;
+}
+
+@media screen and (max-width: 750px) {
+    main {
+        margin: 1rem 1rem;
+    }
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.625rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+legend {
+    font-size: .875rem;
+    font-weight:700;
+}
+
+.fieldLabel {
+    font-weight: 700;
+}
+
+.attestation-textarea textarea {
+    resize: vertical;
+    min-height: 40rem !important;
+}
+
+@media print {
+    .print-arrangement, .rvt-header, .rvt-footer {
+        display: none;
+    }
+}
+
+.help-collapse {
+    font-size: 12px;
+    margin-bottom: .5rem;
+}
+
+.help-collapse button {
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.help-collapse button:focus {
+    box-shadow: none !important;
+}
+
+.help-collapse button svg {
+    display: none;
+}
+
+.help-collapse .rvt-collapsible__content {
+    padding-top: .4rem;
+}
+
+.no-label label {
+    display: none;
+}
+
+.testenv-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 22.5rem;
+    z-index: 99;
+}
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+b {
+    font-weight: bold!important;
+}
+
+.rvt-header-wrapper {
+    z-index: 98;
+}
+
+.rvt-pagination__item button[aria-current=page] {
+    background-color: #fff3f0;
+    box-shadow: 0 0.25rem 0 #900;
+}
+.rvt-pagination__item button:hover {
+    background-color: #edfafd;
+    color: #006298;
+    box-shadow: 0 0.25rem 0 #006298;
+}
+
+.rvt-pagination__item button {
+    background: none;
+    border: none;
+    color: #243142;
+    flex-grow: 1;
+    height: 100%;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.rvt-label {
+    display: inline-block;
+    font-size: .875rem;
+    font-weight: 700;
+}
+
+#attestation-list-preview__header {
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+@media screen and (max-width: 1080px) {
+    .testenv-badge {
+        top: .6rem;
+        left: 18rem;
+    }
+}
+
+.results-container {
+    font-size: .9rem;
+}
+
+.date-fixed-min-width {
+    min-width: 206px !important;
+}
+
+.time-fixed-min-width {
+    min-width: 150px !important;
+}
+
+.state-fixed-min-width {
+    min-width: 250px !important;
+}
+
+.country-fixed-min-width {
+    min-width: 250px !important;
+}
+
+.BulkInactivationDialog-dialog__body {
+    min-height: 20em;
+}

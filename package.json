@@ -1,0 +1,56 @@
+{
+  "name": "rwa",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "cypress": "13.14.2",
+    "date-fns": "3.6.0",
+    "lodash": "4.17.21",
+    "markdown-it": "14.1.0",
+    "mocha-junit-reporter": "2.2.1",
+    "prop-types": "15.8.1",
+    "react": "18.3.1",
+    "react-app-rewired": "2.2.1",
+    "react-datepicker": "7.3.0",
+    "react-document-title": "2.0.3",
+    "react-dom": "18.3.1",
+    "react-redux": "8.1.3",
+    "react-router": "6.26.1",
+    "react-router-dom": "6.26.1",
+    "react-scripts": "5.0.1",
+    "react-select": "5.8.0",
+    "react-tooltip": "5.28.0",
+    "redux": "4.2.1",
+    "redux-actions": "3.0.3",
+    "redux-form": "8.3.10",
+    "redux-logger": "3.0.6",
+    "redux-promise": "0.6.0",
+    "redux-thunk": "2.4.2",
+    "rivet-icons": "1.0.3",
+    "rivet-react": "2.0.0-beta.10"
+  },
+  "scripts": {
+    "start": "BROWSER=none react-app-rewired start",
+    "start-win": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "cy:open": "while read line; do [[ $line =~ ^CYPRESS_* ]] && export $line; done < ~/properties/rwa-aft.properties; cypress open --project app",
+    "cy:run": "while read line; do [[ $line =~ ^CYPRESS_* ]] && export $line; done < ~/properties/rwa-aft.properties; npm run cy:clean-reports; cypress run --project app; exit 0;",
+    "cy:open-win": "%userprofile%/rwa-aft.cmd && cypress open --project app",
+    "cy:run-win": "%userprofile%/rwa-aft.cmd && if exist \"cypress/reports/\" rmdir /s /q \"app/cypress/reports/\" && cypress run --project app && exit 0",
+    "cy:run-win-local": "%userprofile%/rwa-aft.cmd && cypress run --project app && exit 0",
+    "cy:docker-run": "npm run cy:clean-reports; cypress run; exit 0;",
+    "cy:clean-reports": "rm -rf app/cypress/reports/*"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

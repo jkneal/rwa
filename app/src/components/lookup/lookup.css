@@ -1,0 +1,150 @@
+.sectionHead {
+    margin-bottom: 15px;
+}
+
+.sectionHead .filter {
+    padding-top: 9px;
+}
+
+.sectionHead .resourceName {
+    margin-right: 10px;
+}
+
+.inlineFormGroup {
+    display: inline-block !important;
+    margin-left: 20px;
+}
+
+.inlineFormGroup label {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.inlineFormGroup input {
+    display: inline-block;
+    width: auto;
+}
+
+.inlineFormGroup div {
+    display: inline-block;
+}
+
+.inlineFormGroup button {
+    display: inline-block;
+}
+
+.loadingCustomSearch {
+    margin-top: 1.5rem;
+    margin-bottom: -.5rem;
+    height: 1rem;
+    padding-left: 1rem;
+}
+
+.returnColumn {
+    width: 20px;
+    padding-right: .5rem !important;
+    padding-left: 1rem !important;
+    color: #DDDDDD;
+}
+
+.noWrap {
+    white-space: nowrap;
+}
+
+.resultsHover:hover {
+    background-color: #CDE0E9 !important;
+    cursor: pointer;
+}
+
+.resultsHover:hover .returnColumn {
+    font-weight: bold;
+    color: #0C6396;
+}
+
+.resultsTable thead th {
+    padding: .5rem;
+}
+
+.resultHeader {
+    display: flex;
+    align-items: center;
+}
+
+.resultHeader .fieldTitle {
+    text-align: center;
+}
+
+.resultHeader .sortIcon {
+    display: inline;
+    visibility: hidden;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+.resultHeader:hover .sortIcon {
+    visibility: visible;
+}
+
+.resultHeader .sortIcon.current {
+    visibility: visible;
+}
+
+.resultHeader:hover {
+    cursor: pointer;
+}
+
+.filterControl input {
+    height: 1.6rem !important;
+}
+
+.filterControl select {
+    height: 1.6rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.filterControl label {
+    display: none;
+}
+
+.rvt-input.filterControl {
+    padding: 0;
+}
+
+.resultsHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: .3rem;
+    font-size: .9em;
+    padding: 0 .4rem 0 .2rem;
+}
+
+.countMessage {
+    flex: 1;
+}
+
+.toggleFilters {
+    text-align: right;
+}
+
+.no-padding-left {
+    padding-left: 0 !important;
+}
+
+.no-padding-right {
+    padding-right: 0 !important;
+}
+
+.header-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-action button {
+    font-size: 1rem;
+}
+
+.text-danger {
+    color: #df3603;
+}

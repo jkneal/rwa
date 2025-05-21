@@ -1,0 +1,9 @@
+launchpad:
+  namespace: ua-vpit/enterprise-systems/ebsfs
+  app-code: rwa
+  resources:
+    - cache
+    - database
+    - notifications
+    - oauth
+    - session

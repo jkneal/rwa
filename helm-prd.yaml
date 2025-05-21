@@ -1,0 +1,27 @@
+activeProfiles: "prd"
+serviceAccountName: rwa-prd
+ingress:
+  enabled: true
+  hosts:
+    - host: "rwa.apps.iu.edu"
+
+env:
+  LAUNCHPAD_ENVCODE: prd
+  SPRING_APPLICATION_NAME: rwa
+  SPRING_CONFIG_IMPORT: vault://
+  SPRING_CLOUD_VAULT_URI: https://vault.uits.iu.edu
+  SPRING_CLOUD_VAULT_KV_BACKEND: ua-vpit/enterprise-systems/ebsfs/kv
+  SPRING_PROFILES_GROUP_PRD: all,prd-cns,prd-database,prd-oauth,prd-redis,prd-workflow,prd-ads
+
+cluster: es-prod
+
+cronJobs:
+  - name: "send-review-arrangement-email-batch"
+    schedule: "0 18 * * *" # Run every day at 14:00 EDT
+    backoffLimit: 0
+  - name: "sync-enroute-arrangements-batch"
+    schedule: "0 18 * * *" # Run every day at 14:00 EDT
+    backoffLimit: 0
+  - name: "cache-arrangement-person-batch"
+    schedule: "0 6 * * *" # Run every day at 2:00 EDT
+    backoffLimit: 0

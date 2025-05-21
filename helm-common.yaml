@@ -1,0 +1,28 @@
+nameOverride: rwa
+
+namespace: ua-vpit--enterprise-systems--ebsfs
+
+image:
+  repository: registry.docker.iu.edu/ebsfs/rwa
+  tag: latest
+
+replicaCount: 2
+
+resources:
+  limits:
+    cpu: "1"
+    memory: "1Gi"
+  requests:
+    cpu: "0"
+    memory: "0"
+
+imagePullSecrets:
+  - name: registry-prod
+
+vault:
+  enabled: true
+cluster: es-test.kube.iu.edu
+
+health:
+  livenessPath: /actuator/health/liveness
+  readinessPath: /actuator/health/readiness

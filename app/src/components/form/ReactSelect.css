@@ -1,0 +1,54 @@
+.react-select__control {
+    border: 1px solid #666 !important;
+    border-radius: .25rem !important;
+}
+
+.rvt-validation-danger .react-select__control {
+    transition: box-shadow .2s ease !important;
+    border-color: #df3603 !important;
+    box-shadow: 0 0 0 0.125rem #df3603 !important;
+}
+
+.rvt-validation-warning .react-select__control {
+    transition: box-shadow .2s ease !important;
+    border-color: #f5bb17 !important;
+    box-shadow: 0 0 0 0.125rem #f5bb17 !important;
+}
+
+.react-select__control--is-focused {
+    box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298 !important;
+    transition: box-shadow .2s ease !important;
+}
+
+.react-select__value-container {
+    min-height: 2.4rem !important;
+}
+
+.react-select__value-container input:focus {
+    box-shadow: none !important;
+}
+
+.react-select__clear-indicator:hover {
+    color: #DE350B !important;
+}
+
+.react-select__indicator-separator, .react-select__dropdown-indicator {
+    visibility: hidden !important;
+}
+
+.react-select__input > input {
+    height: auto !important;
+}
+
+.react-select__control {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik04LDEyLjQ2YTIsMiwwLDAsMS0xLjUyLS43TDEuMjQsNS42NWExLDEsMCwxLDEsMS41Mi0xLjNMOCwxMC40Nmw1LjI0LTYuMTFhMSwxLDAsMCwxLDEuNTIsMS4zTDkuNTIsMTEuNzZBMiwyLDAsMCwxLDgsMTIuNDZaIi8+Cjwvc3ZnPg==);
+    background-position: right 1rem center;
+    background-size: 1rem 1rem;
+    background-repeat: no-repeat;
+}
+
+.rvt-validation-danger > .react-select__control {
+    transition: box-shadow .2s ease;
+    border-color: #df3603 !important;
+    box-shadow: 0 0 0 .125rem #df3603;
+}

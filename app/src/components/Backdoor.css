@@ -1,0 +1,35 @@
+.backdoorLoginContainer {
+    align-items: center;
+    padding: 0 .3rem 0 .5rem;
+    margin-bottom: .5rem;
+}
+
+.backdoorLoginContainer .rvt-display-block {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.backdoorLoginContainer input .react-select__control {
+    height: 2rem !important;
+    font-size: 14px !important;
+}
+
+.backdoorLoginContainer button {
+    padding: .1rem .5rem;
+    height: 32px;
+}
+
+.backdoorLoginContainer .rvt-button {
+    flex-grow: 0;
+    font-weight: 400;
+}
+
+.Backdoor-input {
+    width: 13.5em;
+}

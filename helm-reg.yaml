@@ -1,0 +1,14 @@
+activeProfiles: "reg"
+serviceAccountName: rwa-reg
+ingress:
+  enabled: true
+  hosts:
+    - host: "rwa-reg.apps-test.iu.edu"
+
+env:
+  LAUNCHPAD_ENVCODE: reg
+  SPRING_APPLICATION_NAME: rwa
+  SPRING_CONFIG_IMPORT: vault://
+  SPRING_CLOUD_VAULT_URI: https://vault-test.uits.iu.edu
+  SPRING_CLOUD_VAULT_KV_BACKEND: ua-vpit/enterprise-systems/ebsfs/kv
+  SPRING_PROFILES_GROUP_REG: reg-workflow,reg-ads

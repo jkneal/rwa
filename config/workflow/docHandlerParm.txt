@@ -1,0 +1,8 @@
+Namespace Code:	KR-WKFLW - Workflow
+Component:	All
+Application ID:	KUALI
+Parameter Name:	RWA.DocHandlerPrefix
+Parameter Value: https://rwa.apps-test.iu.edu
+Parameter Constraint Code:	Allowed
+Parameter Description:	DocHandlerPrefix for RWA application
+Parameter Type:	Config

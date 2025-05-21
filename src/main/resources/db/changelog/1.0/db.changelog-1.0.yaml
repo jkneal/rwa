@@ -1,0 +1,1044 @@
+databaseChangeLog:
+  - changeSet:
+      id: "FSKD-18161 create arrangement_doc_t"
+      author: FSKD-14535
+      changes:
+        - createTable:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: fdoc_nbr
+                  type: varchar(14)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: emplid
+                  type: varchar(11)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: job_rcd_nbr
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: job_position_nbr
+                  type: varchar(8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: job_title
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: job_department_id
+                  type: varchar(25)
+              - column:
+                  name: job_effdt
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: remote_work_start_dt
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: remote_work_end_dt
+                  type: date
+              - column:
+                  name: work_addr_home
+                  type: varchar(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: work_addr_ln1
+                  type: varchar(100)
+              - column:
+                  name: work_addr_ln2
+                  type: varchar(100)
+              - column:
+                  name: work_addr_city
+                  type: varchar(55)
+              - column:
+                  name: work_addr_st
+                  type: varchar(30)
+              - column:
+                  name: work_addr_cntry
+                  type: varchar(20)
+              - column:
+                  name: work_addr_zip
+                  type: varchar(12)
+              - column:
+                  name: remote_work_typ
+                  type: varchar(15)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: equipment
+                  type: varchar(1000)
+              - column:
+                  name: reason
+                  type: varchar(1000)
+              - column:
+                  name: spvsr_reviewer_id
+                  type: varchar(25)
+              - column:
+                  name: hr_reviewer_id
+                  type: varchar(25)
+              - column:
+                  name: create_ts
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completed_ts
+                  type: timestamp
+              - column:
+                  name: status
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: disapprove_comments
+                  type: varchar(300)
+              - column:
+                  name: attestation_ack
+                  type: varchar(1)
+              - column:
+                  name: attestation_id
+                  type: long
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: "FSKD-18161 create arrangement_work_days_t"
+      author: FSKD-14535
+      changes:
+        - createTable:
+            tableName: arrangement_work_days_t
+            columns:
+              - column:
+                  name: fdoc_nbr
+                  type: varchar(14)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: work_days_typ
+                  type: varchar(25)
+              - column:
+                  name: float_num_of_days
+                  type: int
+              - column:
+                  name: fixed_monday
+                  type: varchar(1)
+              - column:
+                  name: fixed_tuesday
+                  type: varchar(1)
+              - column:
+                  name: fixed_wednesday
+                  type: varchar(1)
+              - column:
+                  name: fixed_thursday
+                  type: varchar(1)
+              - column:
+                  name: fixed_friday
+                  type: varchar(1)
+              - column:
+                  name: fixed_saturday
+                  type: varchar(1)
+              - column:
+                  name: fixed_sunday
+                  type: varchar(1)
+              - column:
+                  name: core_hrs_start_tm
+                  type: time
+              - column:
+                  name: core_hrs_end_tm
+                  type: time
+  - changeSet:
+      id: "FSKD-18161 create attestation_text_t"
+      author: FSKD-14535
+      changes:
+        - createTable:
+            tableName: attestation_text_t
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: text
+                  type: varchar(4000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: effdt
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updt_ts
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updt_user_id
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: "FSKD-18161 create completed_arrangement_t"
+      author: FSKD-14535
+      changes:
+        - createTable:
+            tableName: completed_arrangement_t
+            columns:
+              - column:
+                  name: emplid
+                  type: varchar(11)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: job_rcd_nbr
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: job_position_nbr
+                  type: varchar(8)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: job_title
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: job_department_id
+                  type: varchar(25)
+              - column:
+                  name: job_effdt
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completed_ts
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updt_ts
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updt_doc_nbr
+                  type: varchar(14)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: "FSKD-18161 - add country_t"
+      author: FSKD-18161
+      changes:
+        - createTable:
+            tableName: country_t
+            columns:
+              - column:
+                  name: postal_country_name
+                  type: varchar(255)
+              - column:
+                  name: postal_country_code
+                  type: varchar(2)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: "FSKD-18161 - add state_t"
+      author: FSKD-18161
+      changes:
+        - createTable:
+            tableName: state_t
+            columns:
+              - column:
+                  name: postal_state_name
+                  type: varchar(40)
+              - column:
+                  name: postal_state_code
+                  type: varchar(2)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: "FSKD-18161 - add postal_code_t"
+      author: FSKD-18161
+      changes:
+        - createTable:
+            tableName: postal_code_t
+            columns:
+              - column:
+                  name: postal_code
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: postal_state_code
+                  type: varchar(2)
+                  constraints:
+                    foreignKeyName: fk_postal_code_state
+                    references: state_t(postal_state_code)
+  - changeSet:
+      id: "FSKD-18161 - add records to country_t"
+      author: FSKD-18161
+      changes:
+        - sql:
+            - insert into country_t (postal_country_name, postal_country_code) values('Afghanistan', 'AF');
+              insert into country_t (postal_country_name, postal_country_code) values('Åland Islands', 'AX');
+              insert into country_t (postal_country_name, postal_country_code) values('Albania', 'AL');
+              insert into country_t (postal_country_name, postal_country_code) values('Algeria', 'DZ');
+              insert into country_t (postal_country_name, postal_country_code) values('American Samoa', 'AS');
+              insert into country_t (postal_country_name, postal_country_code) values('Andorra', 'AD');
+              insert into country_t (postal_country_name, postal_country_code) values('Angola', 'AO');
+              insert into country_t (postal_country_name, postal_country_code) values('Anguilla', 'AI');
+              insert into country_t (postal_country_name, postal_country_code) values('Antarctica', 'AQ');
+              insert into country_t (postal_country_name, postal_country_code) values('Antigua and Barbuda', 'AG');
+              insert into country_t (postal_country_name, postal_country_code) values('Argentina', 'AR');
+              insert into country_t (postal_country_name, postal_country_code) values('Armenia', 'AM');
+              insert into country_t (postal_country_name, postal_country_code) values('Aruba', 'AW');
+              insert into country_t (postal_country_name, postal_country_code) values('Australia', 'AU');
+              insert into country_t (postal_country_name, postal_country_code) values('Austria', 'AT');
+              insert into country_t (postal_country_name, postal_country_code) values('Azerbaijan', 'AZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Bahamas', 'BS');
+              insert into country_t (postal_country_name, postal_country_code) values('Bahrain', 'BH');
+              insert into country_t (postal_country_name, postal_country_code) values('Bangladesh', 'BD');
+              insert into country_t (postal_country_name, postal_country_code) values('Barbados', 'BB');
+              insert into country_t (postal_country_name, postal_country_code) values('Belarus', 'BY');
+              insert into country_t (postal_country_name, postal_country_code) values('Belgium', 'BE');
+              insert into country_t (postal_country_name, postal_country_code) values('Belize', 'BZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Benin', 'BJ');
+              insert into country_t (postal_country_name, postal_country_code) values('Bermuda', 'BM');
+              insert into country_t (postal_country_name, postal_country_code) values('Bhutan', 'BT');
+              insert into country_t (postal_country_name, postal_country_code) values('Bosnia and Herzegovina', 'BA');
+              insert into country_t (postal_country_name, postal_country_code) values('Botswana', 'BW');
+              insert into country_t (postal_country_name, postal_country_code) values('Bouvet Island', 'BV');
+              insert into country_t (postal_country_name, postal_country_code) values('Brazil', 'BR');
+              insert into country_t (postal_country_name, postal_country_code) values('British Indian Ocean Territory', 'IO');
+              insert into country_t (postal_country_name, postal_country_code) values('Brunei Darussalam', 'BN');
+              insert into country_t (postal_country_name, postal_country_code) values('Bulgaria', 'BG');
+              insert into country_t (postal_country_name, postal_country_code) values('Burkina Faso', 'BF');
+              insert into country_t (postal_country_name, postal_country_code) values('Burundi', 'BI');
+              insert into country_t (postal_country_name, postal_country_code) values('Cambodia', 'KH');
+              insert into country_t (postal_country_name, postal_country_code) values('Cameroon', 'CM');
+              insert into country_t (postal_country_name, postal_country_code) values('Canada', 'CA');
+              insert into country_t (postal_country_name, postal_country_code) values('Cape Verde', 'CV');
+              insert into country_t (postal_country_name, postal_country_code) values('Cayman Islands', 'KY');
+              insert into country_t (postal_country_name, postal_country_code) values('Central African Republic', 'CF');
+              insert into country_t (postal_country_name, postal_country_code) values('Chad', 'TD');
+              insert into country_t (postal_country_name, postal_country_code) values('Chile', 'CL');
+              insert into country_t (postal_country_name, postal_country_code) values('China', 'CN');
+              insert into country_t (postal_country_name, postal_country_code) values('Christmas Island', 'CX');
+              insert into country_t (postal_country_name, postal_country_code) values('Cocos (Keeling) Islands', 'CC');
+              insert into country_t (postal_country_name, postal_country_code) values('Colombia', 'CO');
+              insert into country_t (postal_country_name, postal_country_code) values('Comoros', 'KM');
+              insert into country_t (postal_country_name, postal_country_code) values('Congo', 'CG');
+              insert into country_t (postal_country_name, postal_country_code) values('Cook Islands', 'CK');
+              insert into country_t (postal_country_name, postal_country_code) values('Costa Rica', 'CR');
+              insert into country_t (postal_country_name, postal_country_code) values('Côte d''Ivoire', 'CI');
+              insert into country_t (postal_country_name, postal_country_code) values('Croatia', 'HR');
+              insert into country_t (postal_country_name, postal_country_code) values('Cuba', 'CU');
+              insert into country_t (postal_country_name, postal_country_code) values('Curaçao', 'CW');
+              insert into country_t (postal_country_name, postal_country_code) values('Cyprus', 'CY');
+              insert into country_t (postal_country_name, postal_country_code) values('Czech Republic', 'CZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Denmark', 'DK');
+              insert into country_t (postal_country_name, postal_country_code) values('Djibouti', 'DJ');
+              insert into country_t (postal_country_name, postal_country_code) values('Dominica', 'DM');
+              insert into country_t (postal_country_name, postal_country_code) values('Dominican Republic', 'DO');
+              insert into country_t (postal_country_name, postal_country_code) values('Ecuador', 'EC');
+              insert into country_t (postal_country_name, postal_country_code) values('Egypt', 'EG');
+              insert into country_t (postal_country_name, postal_country_code) values('El Salvador', 'SV');
+              insert into country_t (postal_country_name, postal_country_code) values('Equatorial Guinea', 'GQ');
+              insert into country_t (postal_country_name, postal_country_code) values('Eritrea', 'ER');
+              insert into country_t (postal_country_name, postal_country_code) values('Estonia', 'EE');
+              insert into country_t (postal_country_name, postal_country_code) values('Ethiopia', 'ET');
+              insert into country_t (postal_country_name, postal_country_code) values('Falkland Islands (Malvinas)', 'FK');
+              insert into country_t (postal_country_name, postal_country_code) values('Faroe Islands', 'FO');
+              insert into country_t (postal_country_name, postal_country_code) values('Fiji', 'FJ');
+              insert into country_t (postal_country_name, postal_country_code) values('Finland', 'FI');
+              insert into country_t (postal_country_name, postal_country_code) values('France', 'FR');
+              insert into country_t (postal_country_name, postal_country_code) values('French Guiana', 'GF');
+              insert into country_t (postal_country_name, postal_country_code) values('French Polynesia', 'PF');
+              insert into country_t (postal_country_name, postal_country_code) values('French Southern Territories', 'TF');
+              insert into country_t (postal_country_name, postal_country_code) values('Gabon', 'GA');
+              insert into country_t (postal_country_name, postal_country_code) values('Gambia', 'GM');
+              insert into country_t (postal_country_name, postal_country_code) values('Georgia', 'GE');
+              insert into country_t (postal_country_name, postal_country_code) values('Germany', 'DE');
+              insert into country_t (postal_country_name, postal_country_code) values('Ghana', 'GH');
+              insert into country_t (postal_country_name, postal_country_code) values('Gibraltar', 'GI');
+              insert into country_t (postal_country_name, postal_country_code) values('Greece', 'GR');
+              insert into country_t (postal_country_name, postal_country_code) values('Greenland', 'GL');
+              insert into country_t (postal_country_name, postal_country_code) values('Grenada', 'GD');
+              insert into country_t (postal_country_name, postal_country_code) values('Guadeloupe', 'GP');
+              insert into country_t (postal_country_name, postal_country_code) values('Guam', 'GU');
+              insert into country_t (postal_country_name, postal_country_code) values('Guatemala', 'GT');
+              insert into country_t (postal_country_name, postal_country_code) values('Guernsey', 'GG');
+              insert into country_t (postal_country_name, postal_country_code) values('Guinea', 'GN');
+              insert into country_t (postal_country_name, postal_country_code) values('Guinea-Bissau', 'GW');
+              insert into country_t (postal_country_name, postal_country_code) values('Guyana', 'GY');
+              insert into country_t (postal_country_name, postal_country_code) values('Haiti', 'HT');
+              insert into country_t (postal_country_name, postal_country_code) values('Heard Island and McDonald Islands', 'HM');
+              insert into country_t (postal_country_name, postal_country_code) values('Holy See (Vatican City State)', 'VA');
+              insert into country_t (postal_country_name, postal_country_code) values('Honduras', 'HN');
+              insert into country_t (postal_country_name, postal_country_code) values('Hong Kong', 'HK');
+              insert into country_t (postal_country_name, postal_country_code) values('Hungary', 'HU');
+              insert into country_t (postal_country_name, postal_country_code) values('Iceland', 'IS');
+              insert into country_t (postal_country_name, postal_country_code) values('India', 'IN');
+              insert into country_t (postal_country_name, postal_country_code) values('Indonesia', 'ID');
+              insert into country_t (postal_country_name, postal_country_code) values('Iraq', 'IQ');
+              insert into country_t (postal_country_name, postal_country_code) values('Ireland', 'IE');
+              insert into country_t (postal_country_name, postal_country_code) values('Isle of Man', 'IM');
+              insert into country_t (postal_country_name, postal_country_code) values('Israel', 'IL');
+              insert into country_t (postal_country_name, postal_country_code) values('Italy', 'IT');
+              insert into country_t (postal_country_name, postal_country_code) values('Jamaica', 'JM');
+              insert into country_t (postal_country_name, postal_country_code) values('Japan', 'JP');
+              insert into country_t (postal_country_name, postal_country_code) values('Jersey', 'JE');
+              insert into country_t (postal_country_name, postal_country_code) values('Jordan', 'JO');
+              insert into country_t (postal_country_name, postal_country_code) values('Kazakhstan', 'KZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Kenya', 'KE');
+              insert into country_t (postal_country_name, postal_country_code) values('Kiribati', 'KI');
+              insert into country_t (postal_country_name, postal_country_code) values('Kuwait', 'KW');
+              insert into country_t (postal_country_name, postal_country_code) values('Kyrgyzstan', 'KG');
+              insert into country_t (postal_country_name, postal_country_code) values('Lao People''s Democratic Republic', 'LA');
+              insert into country_t (postal_country_name, postal_country_code) values('Latvia', 'LV');
+              insert into country_t (postal_country_name, postal_country_code) values('Lebanon', 'LB');
+              insert into country_t (postal_country_name, postal_country_code) values('Lesotho', 'LS');
+              insert into country_t (postal_country_name, postal_country_code) values('Liberia', 'LR');
+              insert into country_t (postal_country_name, postal_country_code) values('Libya', 'LY');
+              insert into country_t (postal_country_name, postal_country_code) values('Liechtenstein', 'LI');
+              insert into country_t (postal_country_name, postal_country_code) values('Lithuania', 'LT');
+              insert into country_t (postal_country_name, postal_country_code) values('Luxembourg', 'LU');
+              insert into country_t (postal_country_name, postal_country_code) values('Macao', 'MO');
+              insert into country_t (postal_country_name, postal_country_code) values('Madagascar', 'MG');
+              insert into country_t (postal_country_name, postal_country_code) values('Malawi', 'MW');
+              insert into country_t (postal_country_name, postal_country_code) values('Malaysia', 'MY');
+              insert into country_t (postal_country_name, postal_country_code) values('Maldives', 'MV');
+              insert into country_t (postal_country_name, postal_country_code) values('Mali', 'ML');
+              insert into country_t (postal_country_name, postal_country_code) values('Malta', 'MT');
+              insert into country_t (postal_country_name, postal_country_code) values('Marshall Islands', 'MH');
+              insert into country_t (postal_country_name, postal_country_code) values('Martinique', 'MQ');
+              insert into country_t (postal_country_name, postal_country_code) values('Mauritania', 'MR');
+              insert into country_t (postal_country_name, postal_country_code) values('Mauritius', 'MU');
+              insert into country_t (postal_country_name, postal_country_code) values('Mayotte', 'YT');
+              insert into country_t (postal_country_name, postal_country_code) values('Mexico', 'MX');
+              insert into country_t (postal_country_name, postal_country_code) values('Monaco', 'MC');
+              insert into country_t (postal_country_name, postal_country_code) values('Mongolia', 'MN');
+              insert into country_t (postal_country_name, postal_country_code) values('Montenegro', 'ME');
+              insert into country_t (postal_country_name, postal_country_code) values('Montserrat', 'MS');
+              insert into country_t (postal_country_name, postal_country_code) values('Morocco', 'MA');
+              insert into country_t (postal_country_name, postal_country_code) values('Mozambique', 'MZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Myanmar', 'MM');
+              insert into country_t (postal_country_name, postal_country_code) values('Namibia', 'NA');
+              insert into country_t (postal_country_name, postal_country_code) values('Nauru', 'NR');
+              insert into country_t (postal_country_name, postal_country_code) values('Nepal', 'NP');
+              insert into country_t (postal_country_name, postal_country_code) values('Netherlands', 'NL');
+              insert into country_t (postal_country_name, postal_country_code) values('New Caledonia', 'NC');
+              insert into country_t (postal_country_name, postal_country_code) values('New Zealand', 'NZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Nicaragua', 'NI');
+              insert into country_t (postal_country_name, postal_country_code) values('Niger', 'NE');
+              insert into country_t (postal_country_name, postal_country_code) values('Nigeria', 'NG');
+              insert into country_t (postal_country_name, postal_country_code) values('Niue', 'NU');
+              insert into country_t (postal_country_name, postal_country_code) values('Norfolk Island', 'NF');
+              insert into country_t (postal_country_name, postal_country_code) values('Northern Mariana Islands', 'MP');
+              insert into country_t (postal_country_name, postal_country_code) values('Norway', 'NO');
+              insert into country_t (postal_country_name, postal_country_code) values('Oman', 'OM');
+              insert into country_t (postal_country_name, postal_country_code) values('Pakistan', 'PK');
+              insert into country_t (postal_country_name, postal_country_code) values('Palau', 'PW');
+              insert into country_t (postal_country_name, postal_country_code) values('Panama', 'PA');
+              insert into country_t (postal_country_name, postal_country_code) values('Papua New Guinea', 'PG');
+              insert into country_t (postal_country_name, postal_country_code) values('Paraguay', 'PY');
+              insert into country_t (postal_country_name, postal_country_code) values('Peru', 'PE');
+              insert into country_t (postal_country_name, postal_country_code) values('Philippines', 'PH');
+              insert into country_t (postal_country_name, postal_country_code) values('Pitcairn', 'PN');
+              insert into country_t (postal_country_name, postal_country_code) values('Poland', 'PL');
+              insert into country_t (postal_country_name, postal_country_code) values('Portugal', 'PT');
+              insert into country_t (postal_country_name, postal_country_code) values('Puerto Rico', 'PR');
+              insert into country_t (postal_country_name, postal_country_code) values('Qatar', 'QA');
+              insert into country_t (postal_country_name, postal_country_code) values('Réunion', 'RE');
+              insert into country_t (postal_country_name, postal_country_code) values('Romania', 'RO');
+              insert into country_t (postal_country_name, postal_country_code) values('Russian Federation', 'RU');
+              insert into country_t (postal_country_name, postal_country_code) values('Rwanda', 'RW');
+              insert into country_t (postal_country_name, postal_country_code) values('Saint Barthélemy', 'BL');
+              insert into country_t (postal_country_name, postal_country_code) values('Saint Kitts and Nevis', 'KN');
+              insert into country_t (postal_country_name, postal_country_code) values('Saint Lucia', 'LC');
+              insert into country_t (postal_country_name, postal_country_code) values('Saint Martin (French part)', 'MF');
+              insert into country_t (postal_country_name, postal_country_code) values('Saint Pierre and Miquelon', 'PM');
+              insert into country_t (postal_country_name, postal_country_code) values('Saint Vincent and the Grenadines', 'VC');
+              insert into country_t (postal_country_name, postal_country_code) values('Samoa', 'WS');
+              insert into country_t (postal_country_name, postal_country_code) values('San Marino', 'SM');
+              insert into country_t (postal_country_name, postal_country_code) values('Sao Tome and Principe', 'ST');
+              insert into country_t (postal_country_name, postal_country_code) values('Saudi Arabia', 'SA');
+              insert into country_t (postal_country_name, postal_country_code) values('Senegal', 'SN');
+              insert into country_t (postal_country_name, postal_country_code) values('Serbia', 'RS');
+              insert into country_t (postal_country_name, postal_country_code) values('Seychelles', 'SC');
+              insert into country_t (postal_country_name, postal_country_code) values('Sierra Leone', 'SL');
+              insert into country_t (postal_country_name, postal_country_code) values('Singapore', 'SG');
+              insert into country_t (postal_country_name, postal_country_code) values('Sint Maarten (Dutch part)', 'SX');
+              insert into country_t (postal_country_name, postal_country_code) values('Slovakia', 'SK');
+              insert into country_t (postal_country_name, postal_country_code) values('Slovenia', 'SI');
+              insert into country_t (postal_country_name, postal_country_code) values('Solomon Islands', 'SB');
+              insert into country_t (postal_country_name, postal_country_code) values('Somalia', 'SO');
+              insert into country_t (postal_country_name, postal_country_code) values('South Africa', 'ZA');
+              insert into country_t (postal_country_name, postal_country_code) values('South Georgia and the South Sandwich Islands', 'GS');
+              insert into country_t (postal_country_name, postal_country_code) values('South Sudan', 'SS');
+              insert into country_t (postal_country_name, postal_country_code) values('Spain', 'ES');
+              insert into country_t (postal_country_name, postal_country_code) values('Sri Lanka', 'LK');
+              insert into country_t (postal_country_name, postal_country_code) values('Sudan', 'SD');
+              insert into country_t (postal_country_name, postal_country_code) values('Suriname', 'SR');
+              insert into country_t (postal_country_name, postal_country_code) values('Svalbard and Jan Mayen', 'SJ');
+              insert into country_t (postal_country_name, postal_country_code) values('Swaziland', 'SZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Sweden', 'SE');
+              insert into country_t (postal_country_name, postal_country_code) values('Switzerland', 'CH');
+              insert into country_t (postal_country_name, postal_country_code) values('Syrian Arab Republic', 'SY');
+              insert into country_t (postal_country_name, postal_country_code) values('Tajikistan', 'TJ');
+              insert into country_t (postal_country_name, postal_country_code) values('Thailand', 'TH');
+              insert into country_t (postal_country_name, postal_country_code) values('Timor-Leste', 'TL');
+              insert into country_t (postal_country_name, postal_country_code) values('Togo', 'TG');
+              insert into country_t (postal_country_name, postal_country_code) values('Tokelau', 'TK');
+              insert into country_t (postal_country_name, postal_country_code) values('Tonga', 'TO');
+              insert into country_t (postal_country_name, postal_country_code) values('Trinidad and Tobago', 'TT');
+              insert into country_t (postal_country_name, postal_country_code) values('Tunisia', 'TN');
+              insert into country_t (postal_country_name, postal_country_code) values('Turkey', 'TR');
+              insert into country_t (postal_country_name, postal_country_code) values('Turkmenistan', 'TM');
+              insert into country_t (postal_country_name, postal_country_code) values('Turks and Caicos Islands', 'TC');
+              insert into country_t (postal_country_name, postal_country_code) values('Tuvalu', 'TV');
+              insert into country_t (postal_country_name, postal_country_code) values('Uganda', 'UG');
+              insert into country_t (postal_country_name, postal_country_code) values('Ukraine', 'UA');
+              insert into country_t (postal_country_name, postal_country_code) values('United Arab Emirates', 'AE');
+              insert into country_t (postal_country_name, postal_country_code) values('United Kingdom', 'GB');
+              insert into country_t (postal_country_name, postal_country_code) values('United States', 'US');
+              insert into country_t (postal_country_name, postal_country_code) values('United States Minor Outlying Islands', 'UM');
+              insert into country_t (postal_country_name, postal_country_code) values('Uruguay', 'UY');
+              insert into country_t (postal_country_name, postal_country_code) values('Uzbekistan', 'UZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Vanuatu', 'VU');
+              insert into country_t (postal_country_name, postal_country_code) values('Viet Nam', 'VN');
+              insert into country_t (postal_country_name, postal_country_code) values('Wallis and Futuna', 'WF');
+              insert into country_t (postal_country_name, postal_country_code) values('Western Sahara', 'EH');
+              insert into country_t (postal_country_name, postal_country_code) values('Yemen', 'YE');
+              insert into country_t (postal_country_name, postal_country_code) values('Zambia', 'ZM');
+              insert into country_t (postal_country_name, postal_country_code) values('Zimbabwe', 'ZW');
+              insert into country_t (postal_country_name, postal_country_code) values('Bolivia, Plurinational State of','BO');
+              insert into country_t (postal_country_name, postal_country_code) values('Bonaire, Sint Eustatius and Saba','BQ');
+              insert into country_t (postal_country_name, postal_country_code) values('Congo, the Democratic Republic of the','CD');
+              insert into country_t (postal_country_name, postal_country_code) values('Iran, Islamic Republic of','IR');
+              insert into country_t (postal_country_name, postal_country_code) values('Korea, Democratic People''s Republic of','KP');
+              insert into country_t (postal_country_name, postal_country_code) values('Korea, Republic of','KR');
+              insert into country_t (postal_country_name, postal_country_code) values('Macedonia, the Former Yugoslav Republic of','MK');
+              insert into country_t (postal_country_name, postal_country_code) values('Micronesia, Federated States of','FM');
+              insert into country_t (postal_country_name, postal_country_code) values('Moldova, Republic of','MD');
+              insert into country_t (postal_country_name, postal_country_code) values('Palestine, State of','PS');
+              insert into country_t (postal_country_name, postal_country_code) values('Saint Helena, Ascension and Tristan da Cunha','SH');
+              insert into country_t (postal_country_name, postal_country_code) values('Taiwan','TW');
+              insert into country_t (postal_country_name, postal_country_code) values('Tanzania, United Republic of','TZ');
+              insert into country_t (postal_country_name, postal_country_code) values('Venezuela, Bolivarian Republic of','VE');
+              insert into country_t (postal_country_name, postal_country_code) values('Virgin Islands, British','VG');
+              insert into country_t (postal_country_name, postal_country_code) values('Virgin Islands, U.S.','VI');
+  - changeSet:
+      id: "FSKD-18161 - add records to state_t"
+      author: FSKD-18161
+      changes:
+        - sql:
+            - insert into state_t (postal_state_name, postal_state_code) values('Alabama', 'AL');
+              insert into state_t (postal_state_name, postal_state_code) values('Alaska', 'AK');
+              insert into state_t (postal_state_name, postal_state_code) values('Arizona', 'AZ');
+              insert into state_t (postal_state_name, postal_state_code) values('Arkansas', 'AR');
+              insert into state_t (postal_state_name, postal_state_code) values('California', 'CA');
+              insert into state_t (postal_state_name, postal_state_code) values('Colorado', 'CO');
+              insert into state_t (postal_state_name, postal_state_code) values('Connecticut', 'CT');
+              insert into state_t (postal_state_name, postal_state_code) values('Delaware', 'DE');
+              insert into state_t (postal_state_name, postal_state_code) values('District of Columbia', 'DC');
+              insert into state_t (postal_state_name, postal_state_code) values('Florida', 'FL');
+              insert into state_t (postal_state_name, postal_state_code) values('Georgia', 'GA');
+              insert into state_t (postal_state_name, postal_state_code) values('Hawaii', 'HI');
+              insert into state_t (postal_state_name, postal_state_code) values('Idaho', 'ID');
+              insert into state_t (postal_state_name, postal_state_code) values('Illinois', 'IL');
+              insert into state_t (postal_state_name, postal_state_code) values('Indiana', 'IN');
+              insert into state_t (postal_state_name, postal_state_code) values('Iowa', 'IA');
+              insert into state_t (postal_state_name, postal_state_code) values('Kansas', 'KS');
+              insert into state_t (postal_state_name, postal_state_code) values('Kentucky', 'KY');
+              insert into state_t (postal_state_name, postal_state_code) values('Louisiana', 'LA');
+              insert into state_t (postal_state_name, postal_state_code) values('Maine', 'ME');
+              insert into state_t (postal_state_name, postal_state_code) values('Montana', 'MT');
+              insert into state_t (postal_state_name, postal_state_code) values('Nebraska', 'NE');
+              insert into state_t (postal_state_name, postal_state_code) values('Nevada', 'NV');
+              insert into state_t (postal_state_name, postal_state_code) values('New Hampshire', 'NH');
+              insert into state_t (postal_state_name, postal_state_code) values('New Jersey', 'NJ');
+              insert into state_t (postal_state_name, postal_state_code) values('New Mexico', 'NM');
+              insert into state_t (postal_state_name, postal_state_code) values('New York', 'NY');
+              insert into state_t (postal_state_name, postal_state_code) values('North Carolina', 'NC');
+              insert into state_t (postal_state_name, postal_state_code) values('North Dakota', 'ND');
+              insert into state_t (postal_state_name, postal_state_code) values('Ohio', 'OH');
+              insert into state_t (postal_state_name, postal_state_code) values('Oklahoma', 'OK');
+              insert into state_t (postal_state_name, postal_state_code) values('Oregon', 'OR');
+              insert into state_t (postal_state_name, postal_state_code) values('Maryland', 'MD');
+              insert into state_t (postal_state_name, postal_state_code) values('Massachusetts', 'MA');
+              insert into state_t (postal_state_name, postal_state_code) values('Michigan', 'MI');
+              insert into state_t (postal_state_name, postal_state_code) values('Minnesota', 'MN');
+              insert into state_t (postal_state_name, postal_state_code) values('Mississippi', 'MS');
+              insert into state_t (postal_state_name, postal_state_code) values('Missouri', 'MO');
+              insert into state_t (postal_state_name, postal_state_code) values('Pennsylvania', 'PA');
+              insert into state_t (postal_state_name, postal_state_code) values('Rhode Island', 'RI');
+              insert into state_t (postal_state_name, postal_state_code) values('South Carolina', 'SC');
+              insert into state_t (postal_state_name, postal_state_code) values('South Dakota', 'SD');
+              insert into state_t (postal_state_name, postal_state_code) values('Tennessee', 'TN');
+              insert into state_t (postal_state_name, postal_state_code) values('Texas', 'TX');
+              insert into state_t (postal_state_name, postal_state_code) values('Utah', 'UT');
+              insert into state_t (postal_state_name, postal_state_code) values('Vermont', 'VT');
+              insert into state_t (postal_state_name, postal_state_code) values('Virginia', 'VA');
+              insert into state_t (postal_state_name, postal_state_code) values('Washington', 'WA');
+              insert into state_t (postal_state_name, postal_state_code) values('West Virginia', 'WV');
+              insert into state_t (postal_state_name, postal_state_code) values('Wisconsin', 'WI');
+              insert into state_t (postal_state_name, postal_state_code) values('Wyoming', 'WY');
+  - changeSet:
+      id: "FSKD-18161 add job_paygroup"
+      author: FSKD-14535
+      changes:
+        - addColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: job_paygroup
+                  type: varchar(3)
+        - addColumn:
+            tableName: completed_arrangement_t
+            columns:
+              - column:
+                  name: job_paygroup
+                  type: varchar(3)
+  - changeSet:
+      id: "FSKD-18161 drop not-null constraint on remote_work_typ in arrangement_doc_t"
+      author: FSKD-18161
+      changes:
+        - dropNotNullConstraint:
+            columnDataType: varchar(15)
+            columnName: remote_work_typ
+            tableName: arrangement_doc_t
+  - changeSet:
+      id: "FSKD-18161 create arrangement_adhoc_t"
+      author: FSKD-18161
+      changes:
+        - createTable:
+            tableName: arrangement_adhoc_t
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: fdoc_nbr
+                  type: varchar(14)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: network_id
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: create_ts
+                  type: timestamp
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: "FSKD-18161 add create_user_id"
+      author: FSKD-18161
+      changes:
+        - addColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: create_user_id
+                  type: varchar(25)
+  - changeSet:
+      id: "bootstrap attestation"
+      author: FSKD-18161
+      validCheckSum: ANY
+      changes:
+        - dbms: postgres
+        - insert:
+            tableName: attestation_text_t
+            columns:
+              - column:
+                  name: text
+                  value: |
+                    I have read the remote work policy and guidelines. I understand the requirements and obligations I am expected to meet as a remote worker. I must perform all the position’s essential functions, just as if I was working on campus.
+                    I acknowledge that nothing contained in this remote work arrangement conveys a contract of employment. Remote work arrangements are extended as a privilege and not a right. This arrangement does not alter or supersede the terms of the existing at-will employment relationship.
+                    I understand and accept the aspects of the remote work arrangement. I know that management reserves the right to alter, modify, or cancel the terms of a remote work arrangement based on business needs at any time. If any information contained in this arrangement changes, it is my responsibility to initiate the completion of an amended Remote Work Arrangement.
+                    I am responsible for protecting the security and privacy of university data & information and agree to follow all university IT guidelines and policies.
+                    I acknowledge I will not be reimbursed or provided a subsidy for utilities, internet service, or parking, except as required by the applicable state law for remote employees who work outside the state of Indiana.
+                    I certify that my proposed location is set up for remote work and does not create safety hazards. I am responsible for any operating cost, maintenance, or other incidental cost associated with the use of the work location.
+                    I have discussed and documented additional aspects of the remote work arrangements required by the policy or my unit. These aspects may include university-owned equipment (computer, monitor, chair, etc.); requirements for coming to campus on a periodic or occasional basis for meetings, training, etc.; expectations regarding professional representation in video backgrounds, attire, ambient sound, and phone/video etiquette; expectations regarding availability, responsiveness, and productivity during remote work; and ensuring management and safety of institutional data.
+              - column:
+                  name: effdt
+                  valueComputed: now() - INTERVAL '1 DAY'
+              - column:
+                  name: last_updt_user_id
+                  value: system
+              - column:
+                  name: last_updt_ts
+                  valueComputed: now()
+  - changeSet:
+      id: "FSKD-18161 add disapprove_reason"
+      author: FSKD-18161
+      changes:
+        - addColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: disapprove_reason
+                  type: varchar(50)
+  - changeSet:
+      id: "FSKD-18161 remove disapprove_comments"
+      author: FSKD-18161
+      changes:
+        - dropColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: disapprove_comments
+  - changeSet:
+      id: "FSKD-18275 remove equipment"
+      author: FSKD-18275
+      changes:
+        - dropColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: equipment
+  - changeSet:
+      id:  "create arrangement indexes"
+      author:  FSKD-18327
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name:  emplid
+              - column:
+                  name:  job_rcd_nbr
+              - column:
+                  name:  job_position_nbr
+            indexName:  i1_arrangement_doc
+            tableName:  arrangement_doc_t
+        - createIndex:
+            columns:
+              - column:
+                  name:  status
+            indexName:  i2_arrangement_doc
+            tableName:  arrangement_doc_t
+        - createIndex:
+            columns:
+              - column:
+                  name:  fdoc_nbr
+            indexName:  i1_arrangement_adhoc
+            tableName:  arrangement_adhoc_t
+  - changeSet:
+      id: "FSKD-18354 - change length of 'reason' to 4000"
+      author: FSKD-18354
+      changes:
+        - modifyDataType:
+            tableName: arrangement_doc_t
+            columnName: reason
+            newDataType: varchar(4000)
+  - changeSet:
+      id: "FSKD-18386 add comments, requester_id, and pushback to arrangement_adhoc_t"
+      author: FSKD-18386
+      changes:
+        - addColumn:
+            tableName: arrangement_adhoc_t
+            columns:
+              - column:
+                  name: requester_id
+                  type: varchar(25)
+              - column:
+                  name: comments
+                  type: varchar(300)
+              - column:
+                  name: pushback
+                  type: varchar(1)
+                  defaultValue: N
+  - changeSet:
+      id: "FSKD-18226 - change current attestation text to include + signs"
+      author: FSKD-18226
+      changes:
+        - sql:
+            - insert into attestation_text_t (text, effdt, last_updt_ts, last_updt_user_id) values (E'+ I have read the remote work policy and guidelines. I understand the requirements and obligations I am expected to meet as a remote worker. I must perform all the position’s essential functions, just as if I were working on campus.\n
+              + I acknowledge that nothing contained in this remote work arrangement conveys a contract of employment. Remote work arrangements are extended as a privilege and not a right. This arrangement does not alter or supersede the terms of the existing at-will employment relationship.\n
+              + I understand and accept the aspects of the remote work arrangement. I know that management reserves the right to alter, modify, or cancel the terms of a remote work arrangement based on business needs at any time. If any information contained in this arrangement changes, it is my responsibility to initiate the completion of an amended Remote Work Arrangement.\n
+              + I am responsible for protecting the security and privacy of university data & information and agree to follow all university IT guidelines and policies.\n
+              + I acknowledge I will not be reimbursed or provided a subsidy for utilities, internet service, or parking, except as required by the applicable state law for remote employees who work outside the state of Indiana.\n
+              + I certify that my proposed location is set up for remote work and does not create safety hazards. I am responsible for any operating cost, maintenance, or other incidental cost associated with the use of the work location.\n
+              + I have discussed and documented additional aspects of the remote work arrangements required by the policy or my unit. These aspects may include university-owned equipment (computer, monitor, chair, etc.); requirements for coming to campus on a periodic or occasional basis for meetings, training, etc.; expectations regarding professional representation in video backgrounds, attire, ambient sound, and phone/video etiquette; expectations regarding availability, responsiveness, and productivity during remote work; and ensuring management and safety of institutional data.\n',
+              current_date::timestamp, current_timestamp, 'system');
+  - changeSet:
+      id: "FSKD-18870 - update previous attestation text for new format"
+      author: FSKD-18870
+      changes:
+        - sql:
+            - update attestation_text_t set text = regexp_replace(text, n'(.+)', '+ \1', 'g') where id in (1, 2)
+  - changeSet:
+      id: "FSKD-18160 add employee name"
+      author: FSKD-18160
+      changes:
+        - addColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: empl_first_nm
+                  type: varchar(150)
+              - column:
+                  name: empl_last_nm
+                  type: varchar(150)
+  - changeSet:
+      id: "FSKD-19322 - update status for 89314772 and 89312987"
+      author: FSKD-19322
+      changes:
+        - sql:
+            - update arrangement_doc_t set status = 'C' where fdoc_nbr in ('89314772', '89312987')
+  - changeSet:
+      id: "FSKD-19807 - set completed_ts to last_updt_ts"
+      author: FSKD-19807
+      changes:
+        - sql:
+            - update
+              rwa.completed_arrangement_t
+              set completed_ts = last_updt_ts
+              where
+              DATE_TRUNC('day', completed_ts) < DATE_TRUNC('day', last_updt_ts);
+  - changeSet:
+      id: "FSKD-29806 - set remote_work_end_dt to null for few employees"
+      author: FSKD-29806
+      changes:
+        - sql:
+            - update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001316908';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002191371';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003469264';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000915816';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000734655';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003039758';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001789948';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001771933';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001562919';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001818188';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002917221';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000961969';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001364567';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003646303';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001902363';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000695586';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002612145';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002508404';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003652254';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003653261';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001428183';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001798970';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001777600';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000257473';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001795158';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001401752';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003651004';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003149378';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000517216';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002617439';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001469762';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002403298';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001709669';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002465828';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003652487';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001968100';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000207488';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003654784';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002644509';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0002166050';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000948482';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001786841';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0003386947';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0000226504';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001372876';
+              update arrangement_doc_t set remote_work_end_dt = null where emplid = '0001338481';
+  - changeSet:
+      id: "FSKD-18267 - update attestation text for new markdown format"
+      author: FSKD-18267
+      changes:
+        - update:
+            columns:
+              - column:
+                  name: text
+                  value: |2
+                    + I have read the remote work policy and guidelines. I understand the requirements and obligations I am expected to meet as a remote worker. I must perform all the position’s essential functions, just as if I were working on campus.
+                    + I acknowledge that nothing contained in this remote work arrangement conveys a contract of employment. Remote work arrangements are extended as a privilege and not a right. This arrangement does not alter or supersede the terms of the existing at-will employment relationship.
+                    + I understand and accept the aspects of the remote work arrangement. I know that management reserves the right to alter, modify, or cancel the terms of a remote work arrangement based on business needs at any time. If any information contained in this arrangement changes, it is my responsibility to initiate the completion of an amended Remote Work Arrangement.
+                    + I am responsible for protecting the security and privacy of university data & information and agree to follow all university IT guidelines and policies.
+                    + I acknowledge I will not be reimbursed or provided a subsidy for utilities, internet service, or parking, except as required by the applicable state law for remote employees who work outside the state of Indiana.
+                    + I certify that my proposed location is set up for remote work and does not create safety hazards. I am responsible for any operating cost, maintenance, or other incidental cost associated with the use of the work location.
+                    + I have discussed and documented additional aspects of the remote work arrangements required by the policy or my unit. These aspects may include university-owned equipment (computer, monitor, chair, etc.); requirements for coming to campus on a periodic or occasional basis for meetings, training, etc.; expectations regarding professional representation in video backgrounds, attire, ambient sound, and phone/video etiquette; expectations regarding availability, responsiveness, and productivity during remote work; and ensuring management and safety of institutional data.
+            tableName: attestation_text_t
+            where: id = 3
+        - update:
+            columns:
+              - column:
+                  name: text
+                  value: |2
+                    + I have read the remote work policy and guidelines. I understand the requirements and obligations I am expected to meet as a remote worker. I must perform all the position’s essential functions, just as if I were working on campus.
+                    + I acknowledge that nothing contained in this remote work arrangement conveys a contract of employment. Remote work arrangements are extended as a privilege and not a right. This arrangement does not alter or supersede the terms of the existing at-will employment relationship.
+                    + I understand and accept the aspects of the remote work arrangement. I know that management reserves the right to alter, modify, or cancel the terms of a remote work arrangement based on business needs at any time. If any information contained in this arrangement changes, it is my responsibility to initiate the completion of an amended Remote Work Arrangement.
+                    + I am responsible for protecting the security and privacy of university data & information and agree to follow all university IT guidelines and policies.
+                    + I acknowledge I will not be reimbursed or provided a subsidy for utilities, internet service, or parking, except as required by the applicable state law for remote employees who work outside the state of Indiana.
+                    + I certify that my proposed location is set up for remote work and does not create safety hazards. I am responsible for any operating cost, maintenance, or other incidental cost associated with the use of the work location.
+                    + I have discussed and documented additional aspects of the remote work arrangements required by the policy or my unit.
+                      + These aspects may include university-owned equipment (computer, monitor, chair, etc.); requirements for coming to campus on a periodic or occasional basis for meetings, training, etc.;
+                      + expectations regarding professional representation in video backgrounds, attire, ambient sound, and phone/video etiquette;
+                      + expectations regarding availability, responsiveness, and productivity during remote work; and
+                      + ensuring management and safety of institutional data.
+            tableName: attestation_text_t
+            where: id = 4
+        - update:
+            columns:
+              - column:
+                  name: text
+                  value: |2
+                    + I have read the remote work policy and guidelines. I understand the requirements and obligations I am expected to meet as a remote worker. I must perform all the position’s essential functions, just as if I were working on campus.
+                    + I acknowledge that nothing contained in this remote work arrangement conveys a contract of employment. Remote work arrangements are extended as a privilege and not a right. This arrangement does not alter or supersede the terms of the existing at-will employment relationship.
+                    + I understand and accept the aspects of the remote work arrangement. I know that management reserves the right to alter, modify, or cancel the terms of a remote work arrangement based on business needs at any time. If any information contained in this arrangement changes, it is my responsibility to initiate the completion of an amended Remote Work Arrangement.
+                    + If I am a non-exempt employee, I understand my expectations about clock-in/clock-out, whether travel time counts as work time, etc., for purposes of compliance with Wage and Hours Laws; all hours worked must be reported, and overtime still requires advance approval by the direct supervisor.
+                    + I understand that I must use applicable paid time off if I am ill, providing occasional care for members of their household, or personal appointments or errands. Additionally, I must work on campus or use the applicable paid time off if I cannot work remotely because of equipment failures or utility outages.
+                    + I am responsible for protecting the security and privacy of university data & information and agree to follow all university IT guidelines and policies. IU- approved storage solutions should be used as appropriate for the relevant data classification. When hard copy material cannot be kept on campus, those materials should be stored in a location that has acceptable access control measures, such as a locked cabinet or locked office. A locked car is not considered a secured location.
+                    + I acknowledge I will not be reimbursed or provided a subsidy for utilities, internet service, or parking, except as required by the applicable state law for remote employees who work outside the state of Indiana. I am responsible for ensuring that my data plan is adequate to support remote work and for any cost incurred for that data plan. IU will not provide or reimburse a phone (landline or cell) or data plan.
+                    + I am responsible for designating a workspace that will not subject me to interruptions or distractions.
+                    + I certify that my proposed location is set up for remote work and does not create safety hazards. I am responsible for any operating cost, maintenance, or other incidental cost associated with the use of the work location.
+                    + I have discussed and documented additional aspects of the remote work arrangements required by the policy or my unit.
+                      + These aspects may include university-owned equipment (computer, monitor, chair, etc.); requirements for coming to campus on a periodic or occasional basis for meetings, training, etc.;
+                      + expectations regarding professional representation in video backgrounds, attire, ambient sound, and phone/video etiquette;
+                      + expectations regarding availability, responsiveness, and productivity during remote work; and
+                      + ensuring management and safety of institutional data.
+            tableName: attestation_text_t
+            where: id = 5
+  -  changeSet:
+       id: FSKD-30707 - deleting document entry for doc 90590161 which is already Cancelled
+       author: FSKD-30707
+       changes:
+         -  delete:
+              schemaName: rwa
+              tableName: arrangement_doc_t
+              where: fdoc_nbr='90590161'
+  -  changeSet:
+       id: FSKD-31196 - deleting document entry which is already Cancelled
+       author: FSKD-31196
+       changes:
+         -  delete:
+              schemaName: rwa
+              tableName: arrangement_doc_t
+              where: fdoc_nbr='89208447'
+  - changeSet:
+      id: "FSKD-18351 add last updated timestamp"
+      author: FSKD-18351
+      changes:
+        - addColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: last_updt_ts
+                  type: timestamp
+  - changeSet:
+      id: "FSKD-18351 - set last_updt_ts to now for existing rows and add nullable constraint"
+      author: FSKD-18351
+      changes:
+        - sql:
+            - update arrangement_doc_t set last_updt_ts = now();
+              alter table arrangement_doc_t alter column last_updt_ts set not null;
+  - changeSet:
+      id: "FSKD-31251 add end date reason"
+      author: FSKD-31251
+      changes:
+        - addColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: ended_due_to_supervisor_change
+                  type: varchar(1)
+                  defaultValue: N
+  - changeSet:
+      id: "FSKD-31689: New distance question"
+      author: FSKD-31689
+      changes:
+        - addColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: distance_iu_campus
+                  type: varchar(1)
+  - changeSet:
+      id: "FSKD-31734 - fix fk datatype"
+      author: FSKD-31734
+      changes:
+        - modifyDataType:
+            tableName: arrangement_doc_t
+            columnName: attestation_id
+            newDataType: int
+  - changeSet:
+      id: update-end-dates
+      author: FSKD-32053
+      changes:
+        - sql:
+              WITH latest_rwa AS (
+                  SELECT emplid, job_rcd_nbr, MAX(completed_ts) AS latest_completed_ts
+                  FROM completed_arrangement_t
+                  GROUP BY emplid, job_rcd_nbr
+              ),
+              document_rwa AS (
+                  SELECT ad.emplid, ad.job_rcd_nbr, ad.fdoc_nbr, ad.remote_work_start_dt
+                  FROM arrangement_doc_t ad
+                  JOIN latest_rwa lr
+                    ON ad.emplid = lr.emplid
+                    AND ad.job_rcd_nbr = lr.job_rcd_nbr
+                    AND ad.completed_ts = lr.latest_completed_ts
+              )
+              update arrangement_doc_t 
+                  SET remote_work_end_dt =
+                  CASE 
+                      WHEN arrangement_doc_t.remote_work_start_dt >= dr.remote_work_start_dt THEN arrangement_doc_t.remote_work_start_dt
+                      ELSE dr.remote_work_start_dt - INTERVAL '1' DAY
+                  END,
+                  last_updt_ts = CURRENT_TIMESTAMP
+              FROM document_rwa dr
+              WHERE arrangement_doc_t.emplid = dr.emplid
+                AND arrangement_doc_t.job_rcd_nbr = dr.job_rcd_nbr
+                AND arrangement_doc_t.fdoc_nbr != dr.fdoc_nbr
+                AND (arrangement_doc_t.remote_work_end_dt IS NULL OR arrangement_doc_t.remote_work_end_dt >= dr.remote_work_start_dt)
+                AND arrangement_doc_t.status = 'C';
+  - changeSet:
+      id: update-arrangement-dept
+      author: FSKD-32337
+      changes:
+        - sql:
+            update arrangement_doc_t set job_department_id = 'UA-ESOL' where fdoc_nbr = '94707290' and emplid = '0003175762';
+        - sql:
+            update completed_arrangement_t set job_department_id = 'UA-ESOL' where last_updt_doc_nbr = '94707290' and emplid = '0003175762';
+  - changeSet:
+      id: update-arrangements-depts
+      author: FSKD-32338
+      changes:
+        - sqlFile:
+            path: update-arrangements-depts.sql
+            relativeToChangelogFile: true
+            encoding: UTF-8
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ";"

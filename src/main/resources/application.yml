@@ -1,0 +1,7 @@
+###
+# workflow and ads not managed by EP yet
+spring:
+  cloud.vault:
+    uri: https://vault-test.uits.iu.edu
+    kv.backend: ua-vpit/enterprise-systems/ebsfs/kv
+  profiles.group.dev: dev-workflow,dev-ads

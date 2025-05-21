@@ -1,0 +1,28 @@
+activeProfiles: "stg"
+serviceAccountName: rwa-stg
+ingress:
+  enabled: true
+  hosts:
+    - host: "rwa.apps-test.iu.edu"
+
+env:
+  LAUNCHPAD_ENVCODE: stg
+  SPRING_APPLICATION_NAME: rwa
+  SPRING_CONFIG_IMPORT: vault://
+  SPRING_CLOUD_VAULT_URI: https://vault-test.uits.iu.edu
+  SPRING_CLOUD_VAULT_KV_BACKEND: ua-vpit/enterprise-systems/ebsfs/kv
+  SPRING_PROFILES_GROUP_STG: all,stg-cns,stg-database,stg-oauth,stg-redis,stg-workflow,stg-ads
+
+cronJobs:
+  - name: "send-review-arrangement-email-batch"
+    schedule: "0 18 * * *" # Run every day at 14:00 EDT
+    backoffLimit: 0
+  - name: "sync-enroute-arrangements-batch"
+    schedule: "0 18 * * *" # Run every day at 14:00 EDT
+    backoffLimit: 0
+  - name: "cache-arrangement-person-batch"
+    schedule: "0 18 * * *" # Run every day at 14:00 EDT
+    backoffLimit: 0
+  - name: "send-expiring-soon-email-batch"
+    schedule: "0 18 * * *" # Run every day at 14:00 EDT
+    backoffLimit: 0

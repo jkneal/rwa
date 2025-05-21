@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: "FSKD-32838: Add student-facing percentage field"
+      author: FSKD-32838
+      changes:
+        - addColumn:
+            tableName: arrangement_doc_t
+            columns:
+              - column:
+                  name: student_facing_percentage
+                  type: int
+                  remarks: "Percentage of work that is student-facing or requires on-campus support (0, 20, 40, 60, 80, 100)"

@@ -1,0 +1,126 @@
+{
+  "job": {
+    "jobRecordNumber": 1,
+    "jobTitle": "IT Sr. Executive",
+    "jobDepartmentId": "UA-DCIO"
+  },
+  "remoteWorkStartDate": "08/25/2021",
+  "remoteWorkEndDate": "08/26/2021",
+  "workAddressHome": false,
+  "workAddressLine1": "3301 N Grey Street",
+  "workAddressLine2": "House #2",
+  "workAddressCity": "Drumland",
+  "workAddressState": "IN",
+  "workAddressCountry": "US",
+  "workAddressZip": "44433",
+  "remoteWorkType": "FULLY_REMOTE",
+  "reason": "For automated functional test",
+  "studentFacingPercentage": 40,
+  "supervisorReviewerId": "masargen",
+  "hrReviewerId": null,
+  "createTimestamp": "2021-08-25T09:59:19.163038",
+  "createUserId": "aaneal",
+  "completedTimestamp": null,
+  "status": "R",
+  "disapproveReason": null,
+  "attestationAcknowledged": true,
+  "arrangementWorkDays": {
+    "documentNumber": "76242110",
+    "workDaysType": null,
+    "floatingNumberOfDays": null,
+    "fixedMonday": false,
+    "fixedTuesday": false,
+    "fixedWednesday": false,
+    "fixedThursday": false,
+    "fixedFriday": false,
+    "fixedSaturday": false,
+    "fixedSunday": false,
+    "coreHoursStartTime": "08:30:00",
+    "coreHoursEndTime": "17:00:00",
+    "formattedCoreHoursStartTime": "08:30 AM",
+    "formattedCoreHoursEndTime": "05:00 PM"
+  },
+  "attestationText": {
+    "lastUpdatedTimestamp": "06/14/2021 01:30 PM",
+    "lastUpdatedUserId": "system",
+    "id": 6,
+    "text": "I have read the remote work policy and guidelines, and understand the requirements and obligations I am expected to meet as a remote worker. I must perform all the essential functions of the position, just as if I was working on campus.\nI acknowledge that nothing contained in this remote work arrangement conveys a contract of employment. Remote work arrangements are extended as an employee privilege and not a right. This arrangement does not alter or supersede the terms of the existing at-will employment relationship.\nI understands and accept the aspects of the remote work arrangement. That management reserves the right to alter, modify, or cancel the terms of a remote work arrangement based on business needs at any time. If any information contained in this arrangement changes, it is my responsibility to initiate the completion of an amended Remote Work Arrangement.\nI am responsible for protecting the security and privacy of university data & information and agree to follow all university IT guidelines and policies.\nI acknowledge I will not be reimburse or provide a subsidy for utilities, broadband service, or parking, except as required by the applicable state law for remote employees who work outside the state of Indiana.\nI certify that my proposed location is set up for remote work and does not create safety hazards, and that I am responsible for any operating cost, maintenance, or other incidental cost associated with the use of the work location.\nI have discussed and documented additional aspects of the remote work arrangements required by the policy or my unit. These aspects may include: University-owned equipment (computer, monitor, chair, etc.); Requirements for coming to campus on a periodic or occasional basis for meetings, training, etc.; Expectations regarding professional representation in video backgrounds, attire, ambient sound, and phone/video etiquette; Expectations regarding availability, responsiveness, and productivity during remote work; Ensuring management and safety of institutional data.\n",
+    "effectiveDate": "06/13/2021"
+  },
+  "arrangementAdHocs": [],
+  "workCountry": {
+    "postalCountryCode": "US",
+    "postalCountryName": "United States"
+  },
+  "workState": {
+    "postalStateCode": "IN",
+    "postalStateName": "Indiana"
+  },
+  "workflowDocument": {
+    "id": "76242110",
+    "status": "R",
+    "displayStatus": "ENROUTE",
+    "title": "Aaron Neal, UA-DCIO",
+    "_links": {
+      "self": {
+        "href": "https://wrkflw-snd.apps-snd.iu.edu/processInstances/76242110"
+      },
+      "processInstance": {
+        "href": "https://wrkflw-snd.apps-snd.iu.edu/processInstances/76242110"
+      },
+      "actions": {
+        "href": "https://wrkflw-snd.apps-snd.iu.edu/processInstances/76242110/actions"
+      },
+      "variables": {
+        "href": "https://wrkflw-snd.apps-snd.iu.edu/processInstances/76242110/variables"
+      },
+      "routeLog": {
+        "href": "https://apps-test.iu.edu/kr-snd/workflow/documents/76242110/log"
+      }
+    },
+    "completed": false,
+    "canCancel": false,
+    "canComplete": false,
+    "canAcknowledge": false,
+    "canApprove": false,
+    "canDisapprove": false,
+    "inProcess": true,
+    "disapproved": false
+  },
+  "additionalReviewerId": null,
+  "comments": null,
+  "personService": null,
+  "expired": false,
+  "hrReviewer": null,
+  "formattedWorkAddressHome": "NO",
+  "formattedCreateTimestamp": "08/25/2021",
+  "formattedCompletedTimestamp": null,
+  "employee": {
+    "networkId": "aaneal",
+    "firstName": "Aaron",
+    "lastName": "Neal",
+    "emailAddress": "aaneal@iu.edu",
+    "campusPhoneNumber": null,
+    "campus": "BL",
+    "jobs": [
+      {
+        "jobTitle": "IT Sr. Executive",
+        "jobDepartmentId": "UA-DCIO"
+      }
+    ],
+    "contacts": [
+      {
+        "phoneNumber": null
+      }
+    ],
+    "admin": false,
+    "reviewer": false,
+    "impersonating": true,
+    "backdoorAllowed": true
+  },
+  "supervisor": {
+    "firstName": "Rob",
+    "lastName": "Lowden",
+    "networkId": "rob"
+  }
+}

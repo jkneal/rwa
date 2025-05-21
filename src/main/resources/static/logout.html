@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/rivet-core@2.5.1/css/rivet.min.css">
+    <title>Log out: Remote Work Arrangement - Indiana University</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            color: #333333;
+        }
+
+        svg {
+            flex-shrink: 0;
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        .header {
+            height: auto;
+            position: relative;
+            background-color: #eaeaea;
+        }
+
+        .lockup-iu {
+            display: none;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 0.5rem;
+            position: absolute;
+            left: 50px;
+        }
+
+        .lockup-title {
+            position:absolute;
+            top: 19px;
+            left: 57px;
+            font-size: 1.2375rem;
+            font-weight: 700;
+            letter-spacing: .04rem;
+            display: inline-block;
+        }
+
+        .trident {
+            margin: 1rem;
+            width: 32px;
+            -ms-flex-preferred-size: 32px;
+            flex-basis: 32px;
+            height: 37px;
+            background-color: inherit;
+            color: inherit;
+        }
+
+        .content {
+            overflow: auto;
+            height: auto;
+            flex: 1 0 auto;
+        }
+
+        .base {
+            padding: 2rem 2.5rem 2.5rem;
+            background-color: #ffffff;
+            border-radius: 4px;
+            overflow: auto;
+        }
+
+        .base-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .username {
+            margin-top: 0.5rem;
+        }
+
+        .guest-email {
+            margin: 0.5rem 0 1rem;
+        }
+
+        .guest-email-button {
+            margin-top: 1rem;
+        }
+
+        input.id-highlight, input.iu-highlight, input.highlight-warning {
+            -webkit-transition: -webkit-box-shadow .2s ease;
+            transition: -webkit-box-shadow .2s ease;
+            transition: box-shadow .2s ease;
+            transition: box-shadow .2s ease, -webkit-box-shadow .2s ease;
+            border-color: #f5bb17;
+            -webkit-box-shadow: 0 0 0 0.125rem #f5bb17;
+            box-shadow: 0 0 0 0.125rem #f5bb17;
+        }
+
+        input.id-highlight:focus, input.iu-highlight:focus, input.highlight-warning:focus {
+            border-color: #666666;
+            -webkit-box-shadow: 0 0 0 0.125rem #ffffff, 0 0 0 0.2875rem #f5bb17;
+            box-shadow: 0 0 0 0.125rem #ffffff, 0 0 0 0.2875rem #f5bb17;
+        }
+
+        input.at-highlight, input.highlight-info {
+            -webkit-transition: -webkit-box-shadow .2s ease;
+            transition: -webkit-box-shadow .2s ease;
+            transition: box-shadow .2s ease;
+            transition: box-shadow .2s ease, -webkit-box-shadow .2s ease;
+            border-color: #006298;
+            -webkit-box-shadow: 0 0 0 0.125rem #006298;
+            box-shadow: 0 0 0 0.125rem #006298;
+        }
+
+        input.at-highlight:focus, input.highlight-info:focus {
+            border-color: #666666;
+            -webkit-box-shadow: 0 0 0 0.125rem #ffffff, 0 0 0 0.2875rem #006298;
+            box-shadow: 0 0 0 0.125rem #ffffff, 0 0 0 0.2875rem #006298;
+        }
+
+        .info {
+            color: #006298;
+        }
+
+        .success {
+            color: #008a28;
+        }
+
+        .warning {
+            color: #f5bb17;
+        }
+
+        .danger {
+            color: #df3603;
+        }
+
+        .passphrase {
+            margin-top: 1.5rem;
+        }
+
+        .cta {
+            margin-top: 2.5rem;
+        }
+
+        .help {
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+
+        .help a, .help button {
+            font-size: 0.875rem;
+            text-decoration: none;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 0.875rem;
+            padding: 0 0.875rem;
+        }
+
+        .help a:active, .help a:hover, .help a:focus {
+            color: #134a71;
+            text-decoration: underline;
+        }
+
+        .help svg {
+            text-decoration: none !important;
+        }
+
+        .help span, .left-bump {
+            margin-left: .25rem;
+        }
+
+        #seeOptions, #create {
+            font-weight: normal;
+            width: auto;
+        }
+
+        .footer {
+            flex-shrink: 0;
+            text-align: center;
+            font-size: 0.75rem;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
+
+        .footer a {
+            color: #333;
+        }
+
+        #noscript {
+            margin-top: 1.5rem;
+            margin-bottom: -24rem;
+        }
+
+        .base-duo {
+            margin-bottom: 0.5rem;
+        }
+
+        #duo_iframe {
+            border-width: 0;
+            width: 100%;
+            min-width: 288px;
+            max-width: 360px;
+            height: 380px;
+        }
+
+        #login-button {
+            padding-bottom: 1px;
+        }
+
+        /*Tabs for University + Guest */
+        .lockup-tabs {
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin-right: .5rem;
+        }
+
+        .tab[aria-selected='true'] {
+            border-bottom: 4px solid #006298;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        .tab:focus:active {
+            padding: .5rem 1rem;
+        }
+
+        .tab:focus {
+            padding: .5rem .75rem;
+            border: 4px solid #134a71;
+            outline: none;
+        }
+
+        .tab:hover, .tab:active {
+            border-bottom: 4px solid #134a71 !important;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        .tab {
+            border: none;
+            background-color: transparent;
+            padding: .5rem 1rem;
+        }
+
+        [role='tabpanel']:focus {
+            box-shadow: inset 0 0 0 0.125rem #006298;
+            outline: none;
+        }
+
+        /* Horizontal rule for Guest */
+        .hr {
+            width: 100%;
+            text-align: center;
+            background-color: #ffffff;
+            position: relative;
+            color: #333333;
+            z-index: 1;
+            overflow: hidden;
+            margin: 2rem 0;
+            font-size: 1rem;
+        }
+
+        .hr:before, .hr:after {
+            width: 50%;
+            top: 51%;
+            overflow: hidden;
+            height: 1px;
+            background-color: #c3c3c3;
+            content: '\a0';
+            position: absolute;
+        }
+
+        .hr:before {
+            margin-left: -54%;
+            text-align: right;
+        }
+
+        .hr:after {
+            margin-left: 4%;
+        }
+
+        .hide-mobile {
+            display: none;
+        }
+
+        /* Small view ports and up */
+        @media screen and (min-width: 30em) {
+
+            html, body {
+                background-color: #eaeaea;
+                height: auto;
+            }
+
+            .centered {
+                margin: auto;
+                max-width: 440px;
+                width: 100%;
+                position: inherit;
+            }
+
+            .lockup {
+                overflow: hidden;
+                margin-top: 2rem;
+                padding-bottom: 1rem;
+            }
+
+            .lockup img {
+                margin: 0;
+                width: 50px;
+            }
+
+            .lockup-iu {
+                display: inline-block;
+                position: absolute;
+                top: 4px;
+            }
+
+            .lockup-title {
+                top: 22px;
+                left: 58px;
+                font-size: 1.325rem;
+            }
+
+            .trident {
+                min-width: 58px;
+                -ms-flex-preferred-size: 58px;
+                flex-basis: 58px;
+                height: 58px;
+                margin: 0;
+            }
+
+            .trident-logo {
+                width: 50px;
+                height: 58px;
+            }
+
+            .footer {
+                margin-bottom: 4rem;
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
+            }
+
+            .base-title {
+                font-size: 1.4375rem;
+            }
+        }
+
+        /* Tab width for small mobile devices */
+        @media only screen and ( max-width: 22rem ) {
+            .base {
+                padding: 2rem 2rem 2.5rem;
+            }
+
+            .tab {
+                padding-left: .5rem;
+                padding-right: .5rem;
+            }
+        }
+
+        /* Removes padding to allow more width for Duo iframe on smaller devices */
+        @media only screen and ( max-width: 23.75rem ) {
+            .duo {
+                padding: 2rem 1rem 2.5rem 1rem;
+            }
+        }
+
+        /* Applied top margin for screens with vertical space */
+        @media only screen and ( min-height: 54rem ) and (min-width: 30em) {
+            .header {
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="centered lockup">
+        <div class="trident">
+            <svg class="trident-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48" aria-describedby="iu-logo">
+                <title id="iu-logo">Indiana University Trident</title>
+                <rect width="41" height="48" fill="#900"></rect>
+                <polygon points="24.59 12.64 24.59 14.98 26.34 14.98 26.34 27.78 22.84 27.78 22.84 10.9 24.59 10.9 24.59 8.57 16.41 8.57 16.41 10.9 18.16 10.9 18.16 27.78 14.66 27.78 14.66 14.98 16.41 14.98 16.41 12.64 8.22 12.64 8.22 14.98 9.97 14.98 9.97 30.03 12.77 33.02 18.16 33.02 18.16 36.52 16.41 36.52 16.41 39.43 24.59 39.43 24.59 36.52 22.84 36.52 22.84 33.02 28 33.02 31.01 30.03 31.01 14.98 32.78 14.98 32.78 12.64 24.59 12.64" fill="#fff"></polygon>
+            </svg>
+        </div>
+        <p class="lockup-iu">
+            Indiana University
+        </p>
+        <h1 class="lockup-title">
+            Remote Work Arrangement
+        </h1>
+    </div>
+</header>
+<main class="content" role="main">
+    <section class="centered base">
+        <h2 class="base-title">Close your browser</h2>
+        <p>Please know that your browser settings may have prevented you from logging out. For security purposes, <a href="https://kb.iu.edu/d/alxo" target="_blank">clear your cache and cookies</a>, and then close your browser to terminate this session.</p>
+
+        <p><strong>The logout operation is complete, and no other services appear to have been accessed during this session.</strong></p>
+    </section>
+</main>
+<footer class="footer" role="contentinfo">
+    <p><a href="https://www.iu.edu/copyright/index.html" target="_blank">Copyright</a> © <script type="text/javascript">document.write(new Date().getFullYear())</script>2021 The Trustees of <a href="http://www.iu.edu/" target="_blank">Indiana University</a>.</p>
+</footer>
+
+</body>
+</html>
