@@ -23,7 +23,7 @@ jobs:
         id: code-review
         uses: anthropics/claude-code-action@beta
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           timeout_minutes: "60"
           direct_prompt: |
